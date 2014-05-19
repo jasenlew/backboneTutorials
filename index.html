@@ -67,13 +67,23 @@
 			}
 		});
 
+		var EditUser = Backbone.View.extend({
+			el: '.page',
+			render: function () {
+				var template = _.template($('#edit-user-template').html(), {});
+				this.$el.html(template);
+			}
+		});
+
 		var Router = Backbone.Router.extend({
 			routes: {
-				'': 'home'
+				'': 'home',
+				'new': 'editUser'
 			}
 		});
 
 		var userList = new UserList ();
+		var editUser = new EditUser ();
 
 		var router = new Router();
 
@@ -81,7 +91,11 @@
 			userList.render();
 		});
 
-		//Backbone.history.start({pushState: true});
+		router.on('route:editUser', function () {
+			editUser.render();
+		});
+
+		// Backbone.history.start({pushState: true});
 		Backbone.history.start({});
 
 	</script>
