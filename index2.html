@@ -3,12 +3,35 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Another Backbone Page</title>
-		<link rel="stylesheet" href="main.css" class="stylesheet">
+		<!-- <link rel="stylesheet" href="main.css" class="stylesheet"> -->
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
 	</head>
 	<body>
+		<ul id="people">
 			
+
+		</ul>
+
+		<script type="text/javascript">
+
+			var people = [
+				{name: "Jasen", age: 34},
+				{name: "Ben", age: 28},
+				{name: "Rob", age: 26}
+			];
+
+			var view = {
+				render: function(people) {
+					$("#people").html("");
+
+					_.each(people, function (person) {
+						$("#people").append("<li>" + person.name + " [" + person.age + "] </li>");
+					})
+				}
+			};
+
+		</script>
 	</body>
 </html>
